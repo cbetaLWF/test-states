@@ -1,0 +1,42 @@
+<!--https://baku-blog.com/blender-arjs/ 参考-->
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ARフラスタ試作</title>
+    <!-- A-Frame ライブラリの読み込み -->
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <!-- AR.js ライブラリの読み込み -->
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+</head>
+
+<html>
+    <body>
+        <!-- A-Frame の VR空間に AR.js を紐づける（デバッグUIを非表示） -->
+        <a-scene embedded arjs="debugUIEnable: true;" renderer="gammaOutput: true;" vr-mode-ui="enabled:false" stats>
+
+            <!--オブジェクト読み込み-->           
+            <a-assets>
+                <a-asset-item id="model" src="Simple_box.gltf"></a-asset-item>
+            </a-assets>
+
+            <!--ライトの設定
+            <a-light type="directional" color="#FFF" intensity="0.5" position="-1 1 2"></a-light>
+            <a-light type="ambient" color="#FFF"></a-light>
+            -->
+
+            <!-- マーカーを登録（プリセットされている「hiro」マーカー） -->
+            <a-marker preset="hiro">
+                <a-entity 
+                    gltf-model="#model" position="0 0 0" scale="1 1 1" rotation="0 0 0"
+                    >
+                </a-entity>
+            </a-marker>
+        
+            <!-- AR用のカメラを置く -->
+            <a-entity camera></a-entity>
+        
+        </a-scene>
+    
+    </body>
+</html>
